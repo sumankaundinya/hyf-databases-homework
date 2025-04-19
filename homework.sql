@@ -17,7 +17,7 @@ select * from task ORDER BY created desc limit 1;
 -- 7.Get the title and due date of all tasks where the title or description contains "database"
 SELECT title, due_date from task where title like '%database%' or description like '%database%'; 
 -- 8.Get the title and status (as text) of all tasks
-SELECT task.title, status.name FROM task INNER JOIN status ON task.status_id = status.id;
+SELECT task.title, status.name AS status_text FROM task JOIN status ON task.status_id = status.id;
 -- 9.Get the name of each status, along with a count of how many tasks have that status
 SELECT status.name, COUNT(task.id) as task_count FROM status JOIN task ON status.id = task.status_id GROUP BY status.name; 
 -- 10.Get the names of all statuses, sorted by the status with most tasks first
